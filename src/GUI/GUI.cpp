@@ -1,16 +1,16 @@
 #include <LiquidCrystal.h>
-
+#include <Nytest.cpp>
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 
-void setup() {
+void GUIsetup() {
   lcd.begin(16, 2);
   pinMode(8, INPUT_PULLUP);
   digitalWrite(8, LOW);
  lcd.print("Hoeretester");
 }
 
-void loop() {
+void GUIloop() {
 
 while (digitalRead(8) == LOW) {
 
