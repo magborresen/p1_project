@@ -46,7 +46,7 @@ def calc_age_related(mean, gender, age):
         ws = wb['Maend']
 
     # Compare hearing loss for every frequency relative to the users age
-    
+
 
 
 
@@ -54,6 +54,18 @@ def calc_age_related(mean, gender, age):
 
 def calc_noise_induced(age_related):
     pass
+
+noise_induced = (age_related - mean)
+
+if noise_induced > 0:
+    return noise_induced
+else: return noise_induced * (-1)
+
+
+
+
+
+
 # Show the result
 
 def show_result(mean, age_related, noise_induced):
