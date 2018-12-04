@@ -4,7 +4,7 @@ import pandas as pd
 frequency_mean = {'0.25', '0.5', '1', '2', '4', '8'}
 
 
-def calc_mean(list_left_ear, list_right_ear, gender):
+def calc_mean(list_left_ear, list_right_ear, gender, age):
 
     mean_left = 0
     mean_right = 0
@@ -30,7 +30,7 @@ def calc_mean(list_left_ear, list_right_ear, gender):
 
     mean = (mean_left + mean_right) / 2
 
-    calc_age_related(mean, gender)
+    calc_age_related(mean, gender, age)
 
 
 # Calculate the difference in age related hearing loss
@@ -45,23 +45,21 @@ def calc_age_related(mean, gender, age):
 
     # Compare hearing loss for every frequency relative to the users age
     for age_num in df['Alder [år]']:
-        if age in range()
+        if age in range(int(age_num[0:2]), int(age_num[3:])):
+            age_range = age_num
 
     sort_df = df[df['Alder [år]'] == age_range]
 
-
-
+    for k, v in frequency_mean.items():
+        for freq in sort_df['Frekvens [kHz]']:
+            if float(k) == freq:
+                df2 = sort_df[sort_df['Frekvens [kHz]'] == freq]
 
 # Calculate the noise induced hearing loss
 
-def calc_noise_induced(age_related):
-    pass
+def calc_noise_induced(mean, age_related_loss):
 
-noise_induced = (age_related - mean)
-
-if noise_induced > 0:
-    return noise_induced
-else: return noise_induced * (-1)
+    noise_induced_loss = mean - age_related_loss
 
 
 
