@@ -1,51 +1,48 @@
 import tkinter as tk
-
+from tkinter import ttk
 import Gender
 
-LARGE_FONT = ("Times New Roman", 12)
+TITLE_FONT = ("Verdana", 20, "bold")
 
 
-class Horetester(tk.Tk):
+class Window(tk.Tk):
+
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        container = tk.Frame(self) #indeholder alt vi indsætter
-        container.pack(side="top", fill="both", expand = True)
+        tk.Tk.wm_title(self, "AnyGrapher")
 
+        container = tk.Frame(self)
+        container.pack()
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
-        self.frames = {}
+        self._frame = None
+        self.switch_frame(StartPage)
 
-        for F in (StartPage, Gender):
+    def switch_frame(self, frame_class):
+        #  Destroys the old frame and packs new frame  #
+        new_frame = frame_class(self)
+        if self._frame is not None:
+            self._frame.destroy()
+        self._frame = new_frame
+        self._frame.pack(fill="both", expand=True)
 
-            frame = F(container, self)
-
-            self.frames[F] = frame
-
-            frame.grid(row=0,column = 0, sticky="nsew")
-
-
-        self.show_frame(StartPage)
-
-
-    def show_frame(self, cont):
-
-        frame = self.frames[cont]
-        frame.tkraise()
 
 class StartPage(tk.Frame):
 
-    def __init__ (self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="Start side", font = LARGE_FONT)
-        label.pack(pady=10,padx=10)
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        label = tk.Label(self, text="Horetester V.1",
+                         font=TITLE_FONT)
+        label.pack(padx=10, pady=10)
 
-        Button_1 = tk.Button(self, text ="Kom igang",
-        command = lambda: controller.show_frame(Gender))
-        Button_1.pack()
+        button1 = tk.Button(self, text="Kom Igang",
+                            command=lambda: master.switch_frame(
+                                Gender.GenderPick))
+        button1.pack(fill="x")
 
 
 
-app = Horetester()
+app = Window()
 app.mainloop()
