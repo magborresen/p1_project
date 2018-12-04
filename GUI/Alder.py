@@ -1,4 +1,5 @@
 import tkinter as tk
+import
 
 TITLE_FONT = ("Verdana", 20, "bold")
 
@@ -16,5 +17,5 @@ class Age(tk.Frame):
         entry_1.pack()
 
         button1 = tk.Button(self, text="Næste",
-                            command=lambda: master.switch_frame(StartPage))
+                            command=lambda: master.switch_frame(Test.Test))
         button1.pack()
