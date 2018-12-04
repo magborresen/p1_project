@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 TITLE_FONT = ("Verdana", 20, "bold")
 
 class Test(tk.Frame):
@@ -7,6 +8,6 @@ class Test(tk.Frame):
         label = tk.Label(self, text="Høretest i gang...", font = TITLE_FONT)
         label.pack(pady=10,padx=10)
 
-        Button_1 = tk.Button(self, text ="Hørt",
+        Button_1 = ttk.Button(self, text ="Hørt",
         command = lambda: master.switch_frame(MainGUI.StartPage))
         Button_1.pack()
