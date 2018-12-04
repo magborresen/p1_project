@@ -1,5 +1,7 @@
 import tkinter as tk
 
+import Gender
+
 LARGE_FONT = ("Times New Roman", 12)
 
 
@@ -15,7 +17,7 @@ class Horetester(tk.Tk):
 
         self.frames = {}
 
-        for F in (StartPage, PageOne):
+        for F in (StartPage, PageOne, Gender):
 
             frame = F(container, self)
 
@@ -40,18 +42,10 @@ class StartPage(tk.Frame):
         label.pack(pady=10,padx=10)
 
         Button_1 = tk.Button(self, text ="Kom igang",
-        command = lambda: controller.show_frame(PageOne))
+        command = lambda: controller.show_frame(Gender))
         Button_1.pack()
 
-class PageOne(tk.Frame):
-    def __init__(self,parent,controller):
-        tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="vaelg køn:", font = LARGE_FONT)
-        label.pack(pady=10,padx=10)
 
-        Button_2 = tk.Button(self, text ="Tilbage",
-        command = lambda: controller.show_frame(StartPage))
-        Button_2.pack()
 
 app = Horetester()
 app.mainloop()
