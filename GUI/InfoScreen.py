@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import TEST
+import Test
 
 TITLE_FONT = ("Verdana", 20, "bold")
 

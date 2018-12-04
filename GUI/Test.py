@@ -7,6 +7,6 @@ class Test(tk.Frame):
         label = tk.Label(self, text="Høretest i gang...", font = TITLE_FONT)
         label.pack(pady=10,padx=10)
 
-        Button_1 = tk.Button(self, text ="Hoart",
+        Button_1 = tk.Button(self, text ="Hørt",
         command = lambda: master.switch_frame(MainGUI.StartPage))
         Button_1.pack()

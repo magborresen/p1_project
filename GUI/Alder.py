@@ -1,5 +1,5 @@
 import tkinter as tk
-import
+import InfoScreen
 
 TITLE_FONT = ("Verdana", 20, "bold")
 
@@ -17,5 +17,5 @@ class Age(tk.Frame):
         entry_1.pack()
 
         button1 = tk.Button(self, text="Næste",
-                            command=lambda: master.switch_frame(Test.Test))
+                            command=lambda: master.switch_frame(InfoScreen.Information))
         button1.pack()
