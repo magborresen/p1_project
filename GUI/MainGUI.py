@@ -1,4 +1,5 @@
 import tkinter as tk
+import Alder
 from tkinter import ttk
 import Gender
 
@@ -9,8 +10,6 @@ class Window(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
-        tk.Tk.wm_title(self, "AnyGrapher")
 
         container = tk.Frame(self)
         container.pack()
@@ -33,7 +32,7 @@ class StartPage(tk.Frame):
 
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        label = tk.Label(self, text="Horetester V.1",
+        label = tk.Label(self, text="Høretester V.1",
                          font=TITLE_FONT)
         label.pack(padx=10, pady=10)
 
