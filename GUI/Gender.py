@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import ttk
-import Alder
 
 TITLE_FONT = ("Verdana", 20, "bold")
 
@@ -15,9 +14,9 @@ class GenderPick(tk.Frame):
         Button_2.pack()
 
         Button_3 = ttk.Button(self, text ="Mand",
-        command = lambda: master.switch_frame(Alder.Age))
+        command = lambda: master.switch_frame(MainGUI.StartPage))
         Button_3.pack()
 
         Button_4 = ttk.Button(self, text ="Kvinde",
-        command = lambda: master.switch_frame(Alder.Age))
+        command = lambda: master.switch_frame(MainGUI.StartPage))
         Button_4.pack()
