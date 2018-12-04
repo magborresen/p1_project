@@ -17,7 +17,7 @@ class Horetester(tk.Tk):
 
         self.frames = {}
 
-        for F in (StartPage, PageOne, Gender):
+        for F in (StartPage, Gender):
 
             frame = F(container, self)
 
