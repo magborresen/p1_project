@@ -44,11 +44,11 @@ def calc_age_related(mean, gender, age):
         df = pd.read_excel("hearing_age.xlsx", sheetname="Maend")
 
     # Compare hearing loss for every frequency relative to the users age
-    for k, v in frequency_mean.items():
-        for freq in df['Frekvens [kHz]']:
-            for sheet_age in df['Alder [år]']:
-                if k == str(freq) and age in range(int(sheet_age[0:2], int(sheet_age[3:]))):
-                    
+    for age_num in df['Alder [år]']:
+        if age in range()
+
+    sort_df = df[df['Alder [år]'] == age_range]
+
 
 
 
