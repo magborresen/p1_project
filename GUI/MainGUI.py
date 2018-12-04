@@ -32,7 +32,7 @@ class StartPage(tk.Frame):
 
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        label = tk.Label(self, text="Horetester V.1",
+        label = tk.Label(self, text="Høretester V.1",
                          font=TITLE_FONT)
         label.pack(padx=10, pady=10)
 

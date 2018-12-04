@@ -1,13 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
 import Alder
-
 TITLE_FONT = ("Verdana", 20, "bold")
 
 class GenderPick(tk.Frame):
     def __init__(self,master):
         tk.Frame.__init__(self, master)
-        label = tk.Label(self, text="vaelg køn:", font = TITLE_FONT)
+        label = tk.Label(self, text="Vælg køn:", font = TITLE_FONT)
         label.pack(pady=10,padx=10)
 
         Button_2 = ttk.Button(self, text ="Tilbage",
