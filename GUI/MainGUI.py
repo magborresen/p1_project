@@ -1,4 +1,5 @@
 import tkinter as tk
+import Alder
 from tkinter import ttk
 import Gender
 
@@ -9,8 +10,6 @@ class Window(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
-        tk.Tk.wm_title(self, "AnyGrapher")
 
         container = tk.Frame(self)
         container.pack()
