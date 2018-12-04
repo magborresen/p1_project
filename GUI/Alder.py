@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import InfoScreen
 
 TITLE_FONT = ("Verdana", 20, "bold")
@@ -16,6 +17,6 @@ class Age(tk.Frame):
         label_1.pack()
         entry_1.pack()
 
-        button1 = tk.Button(self, text="Næste",
+        button1 = ttk.Button(self, text="Næste",
                             command=lambda: master.switch_frame(InfoScreen.Information))
         button1.pack()
