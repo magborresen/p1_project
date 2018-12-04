@@ -1,7 +1,7 @@
-from openpyxl import load_workbook
+import pandas as pd
 
 # Create a dictionary of all the frequencies
-frequency_mean = {'0,25', '0,5', '1', '2', '4', '8'}
+frequency_mean = {'0.25', '0.5', '1', '2', '4', '8'}
 
 
 def calc_mean(list_left_ear, list_right_ear, gender):
@@ -39,14 +39,16 @@ def calc_age_related(mean, gender, age):
 
     # Choose sheetname according to gender and convert to openpyxl workbook
     if gender == "Kvinde":
-        wb = load_workbook(filename="hearing_age.xlsx")
-        ws = wb['Kvinder']
+        df = pd.read_excel("hearing_age.xlsx", sheetname="Kvinder")
     elif gender == "Mand":
-        wb = load_workbook("hearing_age.xlsx")
-        ws = wb['Maend']
+        df = pd.read_excel("hearing_age.xlsx", sheetname="Maend")
 
     # Compare hearing loss for every frequency relative to the users age
-    
+    for k, v in frequency_mean.items():
+        for freq in df['Frekvens [kHz]']:
+            for sheet_age in df['Alder [år]']:
+                if k == str(freq) and age in range(int(sheet_age[0:2], int(sheet_age[3:]))):
+                    
 
 
 
@@ -54,6 +56,18 @@ def calc_age_related(mean, gender, age):
 
 def calc_noise_induced(age_related):
     pass
+
+noise_induced = (age_related - mean)
+
+if noise_induced > 0:
+    return noise_induced
+else: return noise_induced * (-1)
+
+
+
+
+
+
 # Show the result
 
 def show_result(mean, age_related, noise_induced):
