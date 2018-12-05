@@ -1,7 +1,14 @@
 import tkinter as tk
-import Alder
 from tkinter import ttk
+import MainGUI
+import Resultat
+import Test
+import InfoScreen
+import Alder
 import Gender
+
+
+
 
 TITLE_FONT = ("Verdana", 20, "bold")
 
