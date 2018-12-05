@@ -47,9 +47,10 @@ class StartPage(tk.Frame):# definere en class som inharits fra tk.TK
         button1 = tk.Button(self, text="Kom Igang",
                             command=lambda: master.switch_frame(
                                 Gender.GenderPick)) #definere en knap og dens funktion
-        button1.pack(fill="x")#indsætter den definerede knap
+        button1.pack()#indsætter den definerede knap
 
 
 
 app = Window()
+app.wm_attributes('-fullscreen','true')
 app.mainloop()#Holder det definerede vindue åben.
