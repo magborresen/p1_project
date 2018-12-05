@@ -1,10 +1,1 @@
-{
-  "Age":,
-  "Gender":,
-  "left_ear_test":,
-  "right_ear_test":,
-  "mean_right":,
-  "mean_right":,
-  "age_related_loss":,
-  "noise_induced_loss":
-}
+{"Age": 23, "Gender": "Mand", "left_ear_test": [], "right_ear_test": [], "mean_right": 22, "age_related_loss": 22, "noise_induced_loss": 22}
