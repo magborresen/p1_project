@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 import Resultat
-import Alder
 
 TITLE_FONT = ("Verdana", 20, "bold")
 

@@ -1,13 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
-import MainGUI
 import Resultat
 import Test
 import InfoScreen
 import Alder
 import Gender
 
-
+geom=""
 
 
 TITLE_FONT = ("Verdana", 20, "bold")
@@ -17,7 +16,6 @@ class Window(tk.Tk):
 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
-
         container = tk.Frame(self)
         container.pack()
         container.grid_rowconfigure(0, weight=1)
@@ -51,4 +49,5 @@ class StartPage(tk.Frame):
 
 
 app = Window()
+app.wm_attributes('-fullscreen','true')
 app.mainloop()
