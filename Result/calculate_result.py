@@ -55,14 +55,8 @@ def calc_age_related(mean, gender, age):
 def calc_noise_induced(age_related):
     pass
 
-noise_induced = (age_related - mean)
 
-if noise_induced > 0:
-    return noise_induced
-else: return noise_induced * (-1)
-
-
-
+s
 
 
 
