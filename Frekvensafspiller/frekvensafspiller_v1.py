@@ -4,10 +4,8 @@ import time
 
 # Initier pygame, som er dimsen, som afspiller lydfilerne
 pygame.mixer.init()
-# Angiv start volumen
 
-
-
+# Funktion, som faar lydstyrken til at stige
 def increase_volume():
     New_volume = pygame.mixer.music.get_volume()
     pygame.mixer.music.set_volume(New_volume)
@@ -17,7 +15,7 @@ def increase_volume():
         time.sleep(1)
         Antal +=1
 
-def two_hundred_fifty():
+def two_hundred_fifty_R():
     lydstyrke = 0.0
     starttid = time.time()
     for ten_loops in range(10):
@@ -26,14 +24,13 @@ def two_hundred_fifty():
             resultattid = sluttid - starttid
             return resultattid
         else:
-            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/250Hz_1.mp3")
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/250Hz_1_R.mp3")
             pygame.mixer.music.play()
             pygame.mixer.music.set_volume(lydstyrke)
             increase_volume()
             lydstyrke = pygame.mixer.music.get_volume()
 
-
-def five_hundred():
+def two_hundred_fifty_L():
     lydstyrke = 0.0
     starttid = time.time()
     for ten_loops in range(10):
@@ -42,13 +39,13 @@ def five_hundred():
             resultattid = sluttid - starttid
             return resultattid
         else:
-            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/500Hz_1.mp3")
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/250Hz_1_L.mp3")
             pygame.mixer.music.play()
             pygame.mixer.music.set_volume(lydstyrke)
             increase_volume()
             lydstyrke = pygame.mixer.music.get_volume()
 
-def thousand():
+def five_hundred_R():
     lydstyrke = 0.0
     starttid = time.time()
     for ten_loops in range(10):
@@ -57,13 +54,13 @@ def thousand():
             resultattid = sluttid - starttid
             return resultattid
         else:
-            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/1000Hz_1.mp3")
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/500Hz_1_R.mp3")
             pygame.mixer.music.play()
             pygame.mixer.music.set_volume(lydstyrke)
             increase_volume()
             lydstyrke = pygame.mixer.music.get_volume()
 
-def two_thousand():
+def five_hundred_L():
     lydstyrke = 0.0
     starttid = time.time()
     for ten_loops in range(10):
@@ -72,13 +69,13 @@ def two_thousand():
             resultattid = sluttid - starttid
             return resultattid
         else:
-            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/2000Hz_1.mp3")
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/500Hz_1_L.mp3")
             pygame.mixer.music.play()
             pygame.mixer.music.set_volume(lydstyrke)
             increase_volume()
             lydstyrke = pygame.mixer.music.get_volume()
 
-def four_thousand():
+def thousand_R():
     lydstyrke = 0.0
     starttid = time.time()
     for ten_loops in range(10):
@@ -87,13 +84,13 @@ def four_thousand():
             resultattid = sluttid - starttid
             return resultattid
         else:
-            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/4000Hz_1.mp3")
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/1000Hz_1_R.mp3")
             pygame.mixer.music.play()
             pygame.mixer.music.set_volume(lydstyrke)
             increase_volume()
             lydstyrke = pygame.mixer.music.get_volume()
 
-def eight_thousand():
+def thousand_L():
     lydstyrke = 0.0
     starttid = time.time()
     for ten_loops in range(10):
@@ -102,17 +99,116 @@ def eight_thousand():
             resultattid = sluttid - starttid
             return resultattid
         else:
-            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/8000Hz_1.mp3")
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/1000Hz_1_L.mp3")
             pygame.mixer.music.play()
             pygame.mixer.music.set_volume(lydstyrke)
             increase_volume()
             lydstyrke = pygame.mixer.music.get_volume()
 
+def two_thousand_R():
+    lydstyrke = 0.0
+    starttid = time.time()
+    for ten_loops in range(10):
+        if knaptrykket():
+            sluttid = time.time()
+            resultattid = sluttid - starttid
+            return resultattid
+        else:
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/2000Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            pygame.mixer.music.set_volume(lydstyrke)
+            increase_volume()
+            lydstyrke = pygame.mixer.music.get_volume()
 
+def two_thousand_L():
+    lydstyrke = 0.0
+    starttid = time.time()
+    for ten_loops in range(10):
+        if knaptrykket():
+            sluttid = time.time()
+            resultattid = sluttid - starttid
+            return resultattid
+        else:
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/2000Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            pygame.mixer.music.set_volume(lydstyrke)
+            increase_volume()
+            lydstyrke = pygame.mixer.music.get_volume()
 
-resultattid_two_hundred_fifty = two_hundred_fifty()
-resultattid_five_hundred = five_hundred()
-resultattid_thousand = thousand()
-resultattid_two_thousand = two_thousand()
-resultattid_four_thousand = four_thousand()
-resultattid_eight_thousand = eight_thousand()
+def four_thousand_R():
+    lydstyrke = 0.0
+    starttid = time.time()
+    for ten_loops in range(10):
+        if knaptrykket():
+            sluttid = time.time()
+            resultattid = sluttid - starttid
+            return resultattid
+        else:
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/4000Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            pygame.mixer.music.set_volume(lydstyrke)
+            increase_volume()
+            lydstyrke = pygame.mixer.music.get_volume()
+
+def four_thousand_L():
+    lydstyrke = 0.0
+    starttid = time.time()
+    for ten_loops in range(10):
+        if knaptrykket():
+            sluttid = time.time()
+            resultattid = sluttid - starttid
+            return resultattid
+        else:
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/4000Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            pygame.mixer.music.set_volume(lydstyrke)
+            increase_volume()
+            lydstyrke = pygame.mixer.music.get_volume()
+
+def eight_thousand_R():
+    lydstyrke = 0.0
+    starttid = time.time()
+    for ten_loops in range(10):
+        if knaptrykket():
+            sluttid = time.time()
+            resultattid = sluttid - starttid
+            return resultattid
+        else:
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/8000Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            pygame.mixer.music.set_volume(lydstyrke)
+            increase_volume()
+            lydstyrke = pygame.mixer.music.get_volume()
+
+def eight_thousand_L():
+    lydstyrke = 0.0
+    starttid = time.time()
+    for ten_loops in range(10):
+        if knaptrykket():
+            sluttid = time.time()
+            resultattid = sluttid - starttid
+            return resultattid
+        else:
+            pygame.mixer.music.load("Frekvensafspiller/Lydfiler/8000Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            pygame.mixer.music.set_volume(lydstyrke)
+            increase_volume()
+            lydstyrke = pygame.mixer.music.get_volume()
+
+resultattid_two_hundred_fifty_R = two_hundred_fifty_R()
+resultattid_five_hundred_R = five_hundred_R()
+resultattid_thousand_R = thousand_R()
+resultattid_two_thousand_R = two_thousand_R()
+resultattid_four_thousand_R = four_thousand_R()
+resultattid_eight_thousand_R = eight_thousand_R()
+
+resultattid_two_hundred_fifty_L = two_hundred_fifty_L()
+resultattid_five_hundred_L = five_hundred_L()
+resultattid_thousand_L = thousand_L()
+resultattid_two_thousand_L = two_thousand_L()
+resultattid_four_thousand_L = four_thousand_L()
+resultattid_eight_thousand_L = eight_thousand_L()
+
+# Resultaterne (maalt i tid) for begge orer
+Person_one_R = [resultattid_two_hundred_fifty_R , resultattid_five_hundred_R , resultattid_thousand_R , resultattid_two_thousand_R , resultattid_four_thousand_R , resultattid_eight_thousand_R]
+Person_one_L = [resultattid_two_hundred_fifty_L , resultattid_five_hundred_L , resultattid_thousand_L , resultattid_two_thousand_L , resultattid_four_thousand_L , resultattid_eight_thousand_L]
