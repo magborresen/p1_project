@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import InfoScreen
-import json
+
 TITLE_FONT = ("Verdana", 20, "bold")
 
 
