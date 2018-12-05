@@ -13,7 +13,6 @@ class Age(tk.Frame):
         label_1 = tk.Label(self, text="Indtast alder:", font= "TITLE_FONT")
         entry_1 = tk.Entry(self)
 
-
         label_1.pack()
         entry_1.pack()
 
