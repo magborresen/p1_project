@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 
 # Create a dictionary of all the frequencies
 frequency_mean = {'0.25': 0, '0.5': 0, '1': 0, '2': 0, '4': 0, '8': 0}
@@ -32,6 +33,15 @@ def calc_mean(list_left_ear, list_right_ear, gender, age):
 
     mean = (mean_left + mean_right) / 2
     print ("Mean total: " + str(mean))
+
+    with open("../variables.json", "r+") as f:
+        data = json.load(f)
+        data["mean_left"] = mean_left
+        data["mean_right"] = mean_right
+        data["mean"] = mean
+        f.seek(0)
+        json.dump(data, f)
+        f.truncate()
 
     calc_age_related(frequency_mean, gender, age)
 
@@ -78,6 +88,20 @@ def calc_age_related(mean, gender, age):
     print ("Age related loss: ")
     print (age_related_loss)
 
+    with open("../variables.json", "r+") as f:
+        data = json.load(f)
+        data["age_related_loss"]["0.25"] = age_related_loss["0.25"]
+        data["age_related_loss"]["0.5"] = age_related_loss["0.5"]
+        data["age_related_loss"]["1"] = age_related_loss["1"]
+        data["age_related_loss"]["2"] = age_related_loss["2"]
+        data["age_related_loss"]["4"] = age_related_loss["4"]
+        data["age_related_loss"]["8"] = age_related_loss["8"]
+        f.seek(0)
+        json.dump(data, f)
+        f.truncate()
+
+    calc_noise_induced(mean, age_related_loss)
+
 
 # Calculate the noise induced hearing loss
 
@@ -97,6 +121,18 @@ def calc_noise_induced(mean, age_related_loss):
     print (noise_induced_loss)
 
     show_result(mean, age_related_loss, noise_induced_loss)
+
+    with open("../variables.json", "r+") as f:
+        data = json.load(f)
+        data["noise_induced_loss"]["0.25"] = noise_induced_loss["0.25"]
+        data["noise_induced_loss"]["0.5"] = noise_induced_loss["0.5"]
+        data["noise_induced_loss"]["1"] = noise_induced_loss["1"]
+        data["noise_induced_loss"]["2"] = noise_induced_loss["2"]
+        data["noise_induced_loss"]["4"] = noise_induced_loss["4"]
+        data["noise_induced_loss"]["8"] = noise_induced_loss["8"]
+        f.seek()
+        json.dump(data, f)
+        f.truncate()
 
 
 # Show the result
