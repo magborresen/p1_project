@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import MainGUI
 import Resultat
 import Test
 import InfoScreen
