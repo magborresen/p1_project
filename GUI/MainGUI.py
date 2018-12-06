@@ -44,10 +44,10 @@ class StartPage(tk.Frame):# definere en class som inharits fra tk.TK
                          font=TITLE_FONT) #definere et label (text)
         label.pack(padx=10, pady=10) #indsætter det definerede label
 
-        button1 = tk.Button(self, text="Kom Igang",
+        KomIGang = tk.Button(self, text="Kom Igang",
                             command=lambda: master.switch_frame(
                                 Gender.GenderPick)) #definere en knap og dens funktion
-        button1.pack()#indsætter den definerede knap
+        KomIGang.pack()#indsætter den definerede knap
 
 
 

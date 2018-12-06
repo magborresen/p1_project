@@ -21,10 +21,10 @@ class Age(tk.Frame):
         if self.age_entry.get() == "":
             print (self.age_entry.get())
 
-        button1 = ttk.Button(self, text="Næste",
+        TilInfo = tk.Button(self, text="Næste",
                             command=lambda: [self.update_json(),
                                              master.switch_frame(InfoScreen.Information)])
-        button1.pack()
+        TilInfo.pack()
 
     def update_json(self):
         age_answer = self.age_entry.get()
