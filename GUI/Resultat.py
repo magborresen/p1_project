@@ -10,6 +10,6 @@ class Result(tk.Frame):
         label = tk.Label(self, text="[SKRIV TEKST OM RESULTATET HER!]:", font = TITLE_FONT)
         label.pack(pady=10,padx=10)
 
-        Button_6 = ttk.Button(self, text ="Ny test",
+        NyTest = tk.Button(self, text ="Ny test",
         command = lambda: master.switch_frame(MainGUI.StartPage))
-        Button_6.pack()
+        NyTest.pack()
