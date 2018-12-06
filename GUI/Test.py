@@ -14,7 +14,7 @@ class Test(tk.Frame):
     def __init__(self,master):
         tk.Frame.__init__(self, master)
         label = tk.Label(self, text="Høretest i gang...", font = TITLE_FONT)
-        label.pack(pady=10,padx=10)
+        label.place(x=400, y=150)
         LydHort = tk.Button(self,width = 20, height = 5, text ="Hørt",
         command = lambda: master.switch_frame(Resultat.Result))
 
@@ -253,3 +253,4 @@ class Test(tk.Frame):
                     pygame.mixer.music.set_volume(lydstyrke)
                     increase_volume()
                     lydstyrke = pygame.mixer.music.get_volume()
+

@@ -38,15 +38,16 @@ class StartPage(tk.Frame):# definere en class som inharits fra tk.TK
 
     def __init__(self, master):#Method som altid køre når class er i brug
         tk.Frame.__init__(self, master)
+        
 
         label = tk.Label(self, text="Høretester V.1",
                          font=TITLE_FONT) #definere et label (text)
-        label.pack(padx=10, pady=10) #indsætter det definerede label
+        label.place(x=400, y=150) #indsætter det definerede label
 
-        KomIGang = tk.Button(self, text="Kom Igang",
+        KomIGang = tk.Button(self, text="Kom Igang",width = 20, height = 5,
                             command=lambda: master.switch_frame(
                                 Gender.GenderPick)) #definere en knap og dens funktion
-        KomIGang.pack()#indsætter den definerede knap
+        KomIGang.place(x=390, y=240)
 
 
 
