@@ -25,6 +25,6 @@ class Information(tk.Frame):
             list_left_ear = data["left_ear_test"]
             list_right_ear = data["right_ear_test"]
 
-        start_test_button = ttk.Button(self, text="Start test",
+        StartTest = tk.Button(self, text="Start test",
                                        command= lambda:[master.switch_frame(Test.Test)])
-        start_test_button.pack()
+        StartTest.pack()
