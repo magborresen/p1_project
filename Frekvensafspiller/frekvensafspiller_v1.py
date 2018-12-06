@@ -5,6 +5,10 @@ import time
 # Initier pygame, som er dimsen, som afspiller lydfilerne
 pygame.mixer.init()
 
+#Setup til knappen
+
+
+
 # Funktion, som faar lydstyrken til at stige
 def increase_volume():
     New_volume = pygame.mixer.music.get_volume()
@@ -195,20 +199,24 @@ def eight_thousand_L():
             increase_volume()
             lydstyrke = pygame.mixer.music.get_volume()
 
-resultattid_two_hundred_fifty_R = two_hundred_fifty_R()
-resultattid_five_hundred_R = five_hundred_R()
-resultattid_thousand_R = thousand_R()
-resultattid_two_thousand_R = two_thousand_R()
-resultattid_four_thousand_R = four_thousand_R()
-resultattid_eight_thousand_R = eight_thousand_R()
+def the_test():
+    resultattid_two_hundred_fifty_R = two_hundred_fifty_R()
+    resultattid_five_hundred_R = five_hundred_R()
+    resultattid_thousand_R = thousand_R()
+    resultattid_two_thousand_R = two_thousand_R()
+    resultattid_four_thousand_R = four_thousand_R()
+    resultattid_eight_thousand_R = eight_thousand_R()
 
-resultattid_two_hundred_fifty_L = two_hundred_fifty_L()
-resultattid_five_hundred_L = five_hundred_L()
-resultattid_thousand_L = thousand_L()
-resultattid_two_thousand_L = two_thousand_L()
-resultattid_four_thousand_L = four_thousand_L()
-resultattid_eight_thousand_L = eight_thousand_L()
+    resultattid_two_hundred_fifty_L = two_hundred_fifty_L()
+    resultattid_five_hundred_L = five_hundred_L()
+    resultattid_thousand_L = thousand_L()
+    resultattid_two_thousand_L = two_thousand_L()
+    resultattid_four_thousand_L = four_thousand_L()
+    resultattid_eight_thousand_L = eight_thousand_L()
 
-# Resultaterne (maalt i tid) for begge orer
+
+#First test subject
+the_test()
 Person_one_R = [resultattid_two_hundred_fifty_R , resultattid_five_hundred_R , resultattid_thousand_R , resultattid_two_thousand_R , resultattid_four_thousand_R , resultattid_eight_thousand_R]
 Person_one_L = [resultattid_two_hundred_fifty_L , resultattid_five_hundred_L , resultattid_thousand_L , resultattid_two_thousand_L , resultattid_four_thousand_L , resultattid_eight_thousand_L]
+Person_one = [Person_one_R , Person_one_L]
