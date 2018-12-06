@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import MainGUI
 import Resultat
 import Test
 import InfoScreen
@@ -12,18 +13,12 @@ geom=""
 TITLE_FONT = ("Verdana", 20, "bold")
 
 
-class Window(tk.Tk):# definere en class som inharits fra tk.TK
+class Window(tk.Tk): # definere en class som inharits fra tk.TK
 
     def __init__(self, *args, **kwargs): #Method som altid køre når class er i brug
         tk.Tk.__init__(self, *args, **kwargs)
-<<<<<<< HEAD
-        container = tk.Frame(self)
-        container.pack()
-=======
-
         container = tk.Frame(self) #definere en container
-        container.pack()#indsætter container
->>>>>>> ab45c1bfb407bd2a6d800ed8d38666911a559274
+        container.pack() #indsætter container
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
@@ -57,8 +52,4 @@ class StartPage(tk.Frame):# definere en class som inharits fra tk.TK
 
 app = Window()
 app.wm_attributes('-fullscreen','true')
-<<<<<<< HEAD
-app.mainloop()
-=======
 app.mainloop()#Holder det definerede vindue åben.
->>>>>>> ab45c1bfb407bd2a6d800ed8d38666911a559274
