@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-{"Age": 2, "Gender": "Kvinde", "left_ear_test": [], "right_ear_test": [], "mean_right": 22, "age_related_loss": 22, "noise_induced_loss": 22}
-=======
 {
   "Age": 23,
   "Gender": "Mand",
@@ -30,4 +27,3 @@
     }
   ]
 }
->>>>>>> 847a5b355759fec5a3b5a99450a462c57dc3228d
