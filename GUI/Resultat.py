@@ -7,9 +7,9 @@ TITLE_FONT = ("Verdana", 20, "bold")
 class Result(tk.Frame):
     def __init__(self,master):
         tk.Frame.__init__(self, master)
-        label = tk.Label(self, text="[SKRIV TEKST OM RESULTATET HER!]:", font = TITLE_FONT)
-        label.pack(pady=10,padx=10)
+        label = tk.Label(self, text="Resultat:", font = TITLE_FONT)
+        label.place(x=400, y=100)
 
-        NyTest = tk.Button(self, text ="Ny test",
+        NyTest = tk.Button(self, width = 20, height = 5, text ="Ny test",
         command = lambda: master.switch_frame(MainGUI.StartPage))
-        NyTest.pack()
+        NyTest.place(x=400, y=320)
