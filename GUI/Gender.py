@@ -18,7 +18,7 @@ class GenderPick(tk.Frame):
         Button_3.pack(pady=100, padx=100)
 
         Button_4 = ttk.Button(self, text="Kvinde",
-                              command=lambda: [self.update_json_woman(self),
+                              command=lambda: [self.update_json_woman(),
                                                master.switch_frame(Alder.Age)])
         Button_4.pack(pady=50, padx=50)
 
