@@ -21,10 +21,10 @@ class Age(tk.Frame):
         if self.age_entry.get() == "":
             print (self.age_entry.get())
 
-        TilInfo = tk.Button(self, text="Næste", width = 10, height = 3,
+        Next_Age = tk.Button(self, text="Næste", width = 10, height = 3,
                             command=lambda: [self.update_json(),
                                              master.switch_frame(InfoScreen.Information)])
-        TilInfo.place(x=540, y=220)
+        Next_Age.place(x=540, y=220)
 
         Num1 = tk.Button(self, text="1", width = 10, height = 3)
         Num2 = tk.Button(self, text="2", width = 10, height = 3)

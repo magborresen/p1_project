@@ -28,6 +28,6 @@ class Information(tk.Frame):
         label3.place(x=100, y=250)
         label_title.place(x=300, y=80)
 
-        StartTest = tk.Button(self, text="Start test", width = 20, height = 5,
+        Start_Test = tk.Button(self, text="Start test", width = 20, height = 5,
                                        command= lambda:[master.switch_frame(Test.Test)])
-        StartTest.place(x=270, y=320)
+        Start_Test.place(x=270, y=320)
