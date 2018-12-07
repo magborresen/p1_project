@@ -7,22 +7,53 @@ import time
 
 TITLE_FONT = ("Verdana", 20, "bold")
 
-class Test(tk.Frame):
-    def __init__(self,master):
-        tk.Frame.__init__(self, master)
-        label = tk.Label(self, text="Høretest i gang...", font = TITLE_FONT)
-        label.pack(pady=10,padx=10)
-        LydHort = tk.Button(self,width = 20, height = 5, text ="Hørt",
-        command = lambda: master.switch_frame(Resultat.Result))
 
-        Button_1.pack()
+class Test(tk.Frame):
+
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        label = tk.Label(self, text="Høretest i gang...", font=TITLE_FONT)
+        label.pack(pady=10, padx=10)
+        sound_heard_btn = tk.Button(self, width=20, height=5, text="Hørt",
+                                    command=lambda: self.hort())
+
+        sound_heard_btn.pack()
 
         # Initier pygame, som er dimsen, som afspiller lydfilerne
         pygame.mixer.init()
 
-    #Setup til knappen
+        self.test_tal = 0
 
-    def knaptrykket(self):
+    def hort(self):
+        self.test_tal += 1
+        if self.test_tal > 1:
+            volume = pygame.mixer.music.get_volume()
+            print (volume)
+
+        if self.test_tal == 1:
+            self.two_hundred_fifty_R()
+        elif self.test_tal == 2:
+            self.two_hundred_fifty_L()
+        elif self.test_tal == 3:
+            self.five_hundred_R()
+        elif self.test_tal == 4:
+            self.five_hundred_L()
+        elif self.test_tal == 5:
+            self.thousand_R()
+        elif self.test_tal == 6:
+            self.thousand_L()
+        elif self.test_tal == 7:
+            self.two_thousand_R()
+        elif self.test_tal == 8:
+            self.two_thousand_L()
+        elif self.test_tal == 9:
+            self.four_thousand_R()
+        elif self.test_tal == 10:
+            self.four_thousand_L()
+        elif self.test_tal == 11:
+            self.eight_thousand_R()
+        elif self.test_tal == 12:
+            self.eight_thousand_L()
 
 
     # Funktion, som faar lydstyrken til at stige
@@ -30,223 +61,151 @@ class Test(tk.Frame):
         New_volume = pygame.mixer.music.get_volume()
         pygame.mixer.music.set_volume(New_volume)
         Antal = 0
-        for Antal in range (1):
+        for Antal in range(1):
             pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.01)
             time.sleep(0.01)
-            Antal +=1
+            Antal += 1
 
     def two_hundred_fifty_R(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/250Hz_1_R.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/250Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def two_hundred_fifty_L(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/250Hz_1_L.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/250Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def five_hundred_R(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/500Hz_1_R.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/500Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def five_hundred_L(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/500Hz_1_L.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/500Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def thousand_R(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/1000Hz_1_R.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/1000Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def thousand_L(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/1000Hz_1_L.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/1000Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def two_thousand_R(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/2000Hz_1_R.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/2000Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def two_thousand_L(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/2000Hz_1_L.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/2000Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
                     pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
+                    self.increase_volume()
                     lydstyrke = pygame.mixer.music.get_volume()
 
     def four_thousand_R(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/4000Hz_1_R.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/4000Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def four_thousand_L(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/4000Hz_1_L.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/4000Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def eight_thousand_R(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/8000Hz_1_R.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/8000Hz_1_R.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
 
     def eight_thousand_L(self):
         lydstyrke = 0.0
         bantal = 0
-        starttid = time.time()
-        for bantal in range (10):
-                pygame.mixer.music.load("Frekvensafspiller/Lydfiler/8000Hz_1_L.mp3")
-                pygame.mixer.music.play()
-                bantal +=1
+        for bantal in range(10):
+            pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/8000Hz_1_L.mp3")
+            pygame.mixer.music.play()
+            bantal += 1
             for ten_loops in range(1000):
-                if knaptrykket():
-                    sluttid = time.time()
-                    resultattid = sluttid - starttid
-                    return resultattid
-                else:
-                    pygame.mixer.music.set_volume(lydstyrke)
-                    increase_volume()
-                    lydstyrke = pygame.mixer.music.get_volume()
+                pygame.mixer.music.set_volume(lydstyrke)
+                self.increase_volume()
+                lydstyrke = pygame.mixer.music.get_volume()
