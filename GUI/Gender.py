@@ -18,7 +18,7 @@ class GenderPick(tk.Frame):
         Next_Gender.place(x=150, y=240)
 
         Next_Gender2 = tk.Button(self, text="Kvinde", width = 20, height = 5,
-                              command=lambda: [self.update_json_woman(self),
+                              command=lambda: [self.update_json_woman(),
                                                master.switch_frame(Alder.Age)])
         Next_Gender2.place(x=450, y=240)
 
