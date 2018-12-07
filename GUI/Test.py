@@ -13,9 +13,9 @@ class Test(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         label = tk.Label(self, text="Høretest i gang...", font=TITLE_FONT)
-        label.pack(pady=10, padx=10)
+        label.place(x=400, y=150)
         sound_heard_btn = tk.Button(self, width=20, height=5, text="Hørt",
-                                    command=lambda: self.hort())
+        command=lambda: self.hort())
 
         sound_heard_btn.pack()
 
