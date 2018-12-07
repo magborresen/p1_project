@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 {"Age": 1, "Gender": "Mand", "left_ear_test": [], "right_ear_test": [], "mean_left": 22, "mean_right": 22, "mean": 22, "age_related_loss": [{"0.25": 0, "0.5": 0, "1": 0, "2": 0, "4": 0, "8": 0}], "noise_induced_loss": [{"0.25": 0, "0.5": 0, "1": 0, "2": 0, "4": 0, "8": 0}]}
-=======
-{"Age": 23, "Gender": "Mand", "left_ear_test": [], "right_ear_test": [], "mean_left": 22, "mean_right": 22, "mean": 22, "age_related_loss": [{"0.25": 0, "0.5": 0, "1": 0, "2": 0, "4": 0, "8": 0}], "noise_induced_loss": [{"0.25": 0, "0.5": 0, "1": 0, "2": 0, "4": 0, "8": 0}]}
->>>>>>> d0c2fca72a83c371cd23b392d5e3a4eacac79d26
