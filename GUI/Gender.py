@@ -10,17 +10,17 @@ class GenderPick(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         label = tk.Label(self, text="Vælg køn:", font=TITLE_FONT)
-        label.place(x=400, y=150)
+        label.place(x=330, y=150)
 
-        TilAlder1 = tk.Button(self, text="Mand", width = 20, height = 5,
+        Next_Gender = tk.Button(self, text="Mand", width = 20, height = 5,
                               command=lambda: [self.update_json_man(),
                                                master.switch_frame(Alder.Age)])
-        TilAlder1.place(x=220, y=240)
+        Next_Gender.place(x=150, y=240)
 
-        TilAlder2 = tk.Button(self, text="Kvinde", width = 20, height = 5,
+        Next_Gender2 = tk.Button(self, text="Kvinde", width = 20, height = 5,
                               command=lambda: [self.update_json_woman(self),
                                                master.switch_frame(Alder.Age)])
-        TilAlder2.place(x=560, y=240)
+        Next_Gender2.place(x=450, y=240)
 
     def update_json_woman(self):
         with open('../variables.json', 'r+') as f:
