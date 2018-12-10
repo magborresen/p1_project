@@ -5,18 +5,29 @@ import json
 frequency_mean = {'0.25': 0, '0.5': 0, '1': 0, '2': 0, '4': 0, '8': 0}
 
 
-def calc_mean(list_left_ear, list_right_ear, gender, age):
+def calc_mean():
+
+    with open('../variables.json', 'r') as f:
+        data = json.load(f)
+        frequency_mean['0.25'] = (data["left_ear_test"]["250"] +
+                                  data["right_ear_test"]["250"]) / 2
+        frequency_mean['0.5'] = (data["left_ear_test"]["500"] +
+                                 data["right_ear_test"]["500"]) / 2
+        frequency_mean['1'] = (data["left_ear_test"]["1000"] +
+                               data["right_ear_test"]["1000"]) / 2
+        frequency_mean['2'] = (data["left_ear_test"]["2000"] +
+                               data["right_ear_test"]["2000"]) / 2
+        frequency_mean['4'] = (data["left_ear_test"]["4000"] +
+                               data["right_ear_test"]["4000"]) / 2
+        frequency_mean['8'] = (data["left_ear_test"]["8000"] +
+                               data["right_ear_test"]["8000"]) / 2
+
 
     mean_left = 0
     mean_right = 0
 
     # Calculate the mean of both ears for every frequency
-    frequency_mean['0.25'] = (list_left_ear[0] + list_right_ear[0]) / 2
-    frequency_mean['0.5'] = (list_left_ear[1] + list_right_ear[1]) / 2
-    frequency_mean['1'] = (list_left_ear[2] + list_right_ear[2]) / 2
-    frequency_mean['2'] = (list_left_ear[3] + list_right_ear[3]) / 2
-    frequency_mean['4'] = (list_left_ear[4] + list_right_ear[4]) / 2
-    frequency_mean['8'] = (list_left_ear[5] + list_right_ear[5]) / 2
+
 
     # Calculate the total mean of the left ear
     for num in list_left_ear:
