@@ -12,7 +12,7 @@ def two_hundred_fifty():
     lydstyrke = 0.1
     for bantal in range (9):
         pygame.mixer.music.set_volume(lydstyrke)
-        pygame.mixer.music.load("Frekvensafspiller/Lydfiler_L+R/250Hz_1.mp3")
+        pygame.mixer.music.load("Lydfiler_L+R/250Hz_1.mp3")
         pygame.mixer.music.play()
         time.sleep(10)
         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
@@ -26,7 +26,7 @@ def five_hundred():
     lydstyrke = 0.1
     for bantal in range (9):
         pygame.mixer.music.set_volume(lydstyrke)
-        pygame.mixer.music.load("Frekvensafspiller/Lydfiler_L+R/500Hz_1.mp3")
+        pygame.mixer.music.load("Lydfiler_L+R/500Hz_1.mp3")
         pygame.mixer.music.play()
         time.sleep(10)
         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
@@ -40,7 +40,7 @@ def thousand():
     lydstyrke = 0.1
     for bantal in range (9):
         pygame.mixer.music.set_volume(lydstyrke)
-        pygame.mixer.music.load("Frekvensafspiller/Lydfiler_L+R/1000Hz_1.mp3")
+        pygame.mixer.music.load("Lydfiler_L+R/1000Hz_1.mp3")
         pygame.mixer.music.play()
         time.sleep(10)
         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
@@ -54,7 +54,7 @@ def two_thousand():
     lydstyrke = 0.1
     for bantal in range (9):
         pygame.mixer.music.set_volume(lydstyrke)
-        pygame.mixer.music.load("Frekvensafspiller/Lydfiler_L+R/2000Hz_1.mp3")
+        pygame.mixer.music.load("Lydfiler_L+R/2000Hz_1.mp3")
         pygame.mixer.music.play()
         time.sleep(10)
         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
@@ -68,7 +68,7 @@ def four_thousand():
     lydstyrke = 0.1
     for bantal in range (9):
         pygame.mixer.music.set_volume(lydstyrke)
-        pygame.mixer.music.load("Frekvensafspiller/Lydfiler_L+R/4000Hz_1.mp3")
+        pygame.mixer.music.load("Lydfiler_L+R/4000Hz_1.mp3")
         pygame.mixer.music.play()
         time.sleep(10)
         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
@@ -82,7 +82,7 @@ def eight_thousand():
     lydstyrke = 0.1
     for bantal in range (9):
         pygame.mixer.music.set_volume(lydstyrke)
-        pygame.mixer.music.load("Frekvensafspiller/Lydfiler_L+R/8000Hz_1.mp3")
+        pygame.mixer.music.load("Lydfiler_L+R/8000Hz_1.mp3")
         pygame.mixer.music.play()
         time.sleep(10)
         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
