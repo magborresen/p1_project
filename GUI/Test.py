@@ -5,6 +5,7 @@ import Alder
 import pygame
 import time
 import json
+import math
 TITLE_FONT = ("Verdana", 20, "bold")
 
 
@@ -83,9 +84,9 @@ class Test(tk.Frame):
             pygame.mixer.music.set_volume(new_volume)
             self.after(1000, self.increase_volume)
 
-    def play_right_ear(self):
+    def play_right_ ear(self):
         volume = 0.000
-        pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/" + str(self.frequency) + "Hz_1_R.mp3")
+        pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
         pygame.mixer.music.play(10)
 
         pygame.mixer.music.set_volume(volume)
@@ -93,12 +94,17 @@ class Test(tk.Frame):
 
     def play_left_ear(self):
         volume = 0.000
-        pygame.mixer.music.load("../Frekvensafspiller/Lydfiler/" + str(self.frequency) + "Hz_1_L.mp3")
+        pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_L.mp3")
         pygame.mixer.music.play(10)
 
         pygame.mixer.music.set_volume(volume)
         self.frequency = self.frequency * 2
         self.increase_volume()
+
+        # Funktion som omregner volumen til decibel ud fra funktion fra tendenslinje
+    def omregner(self):
+        decibel = 0
+        decibel = 8.87864 * math.log(volume) + 79.31112
 
     def update_json(self, ear, volume):
         if ear == 0:
