@@ -10,6 +10,6 @@ class Result(tk.Frame):
         label = tk.Label(self, text="Resultat:", font = TITLE_FONT)
         label.place(x=400, y=100)
 
-        NyTest = tk.Button(self, width = 20, height = 5, text ="Ny test",
+        New_Test = tk.Button(self, width = 20, height = 5, text ="Ny test",
         command = lambda: master.switch_frame(MainGUI.StartPage))
-        NyTest.place(x=400, y=320)
+        New_Test.place(x=400, y=320)

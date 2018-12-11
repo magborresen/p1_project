@@ -7,8 +7,11 @@ import InfoScreen
 import Alder
 import Gender
 
+<<<<<<< HEAD
 geom=""
 
+=======
+>>>>>>> a88effa88c3dae16943548e0a2acf940c2246c4a
 
 TITLE_FONT = ("Verdana", 20, "bold")
 
@@ -38,19 +41,20 @@ class StartPage(tk.Frame):# definere en class som inharits fra tk.TK
 
     def __init__(self, master):#Method som altid køre når class er i brug
         tk.Frame.__init__(self, master)
-        
+
 
         label = tk.Label(self, text="Høretester V.1",
                          font=TITLE_FONT) #definere et label (text)
-        label.place(x=400, y=150) #indsætter det definerede label
+        label.place(x=300, y=150) #indsætter det definerede label
 
-        KomIGang = tk.Button(self, text="Kom Igang",width = 20, height = 5,
+        Get_Started = tk.Button(self, text="Kom Igang",width = 20, height = 5,
                             command=lambda: master.switch_frame(
                                 Gender.GenderPick)) #definere en knap og dens funktion
-        KomIGang.place(x=390, y=240)
+        Get_Started.place(x=295, y=240)
 
 
 
 app = Window()
-app.wm_attributes('-fullscreen','true')
+app.geometry("800x480")
+#app.wm_attributes('-fullscreen','true')
 app.mainloop()#Holder det definerede vindue åben.
