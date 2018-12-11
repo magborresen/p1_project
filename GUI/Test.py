@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 import Resultat
 import Alder
+import sys
+sys.path.append("../Frekvensafspiller")
+import frekvensafspiller_v1
 
 TITLE_FONT = ("Verdana", 20, "bold")
 
