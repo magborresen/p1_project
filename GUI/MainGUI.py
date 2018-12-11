@@ -8,8 +8,6 @@ import Alder
 import Gender
 
 
-
-
 TITLE_FONT = ("Verdana", 20, "bold")
 
 
