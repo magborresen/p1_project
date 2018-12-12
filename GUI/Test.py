@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 import Resultat
-import pygame
 import pyglet
 import time
 import json
