@@ -5,7 +5,7 @@ def play_first():
     print("0,1")
     volume = 0.1
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -23,7 +23,7 @@ def play_second():
     print("0,2")
     volume = 0.2
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -41,7 +41,7 @@ def play_third():
     print("0,3")
     volume = 0.3
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -59,7 +59,7 @@ def play_fourth():
     print("0,4")
     volume = 0.4
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -77,7 +77,7 @@ def play_fifth():
     print("0,5")
     volume = 0.5
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -95,7 +95,7 @@ def play_sixth():
     print("0,6")
     volume = 0.6
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -113,7 +113,7 @@ def play_seventh():
     print("0,7")
     volume = 0.7
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -131,7 +131,7 @@ def play_eighth():
     print("0,8")
     volume = 0.8
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
@@ -149,7 +149,7 @@ def play_nineth():
     print("0,9")
     volume = 0.9
     player = pyglet.media.Player()
-    sound_file = "Frekvensafspiller/justerede_lydfiler(A)/4000Hz.wav"
+    sound_file = "../justerede_lydfiler(A)/4000Hz.wav"
     sound = pyglet.media.load(sound_file, streaming=False)
     looper = pyglet.media.SourceGroup(sound.audio_format, None)
     looper.loop = True
