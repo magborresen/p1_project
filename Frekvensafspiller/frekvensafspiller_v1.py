@@ -16,11 +16,7 @@ def increase_volume():
     Antal = 0
     for Antal in range (1):
         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.01)
-<<<<<<< HEAD
-        time.sleep(0.1)
-=======
         time.sleep(0.01)
->>>>>>> a88effa88c3dae16943548e0a2acf940c2246c4a
         Antal +=1
 
 def two_hundred_fifty_R():
@@ -28,15 +24,9 @@ def two_hundred_fifty_R():
     bantal = 0
     starttid = time.time()
     for bantal in range (10):
-<<<<<<< HEAD
-        pygame.mixer.music.load("Frekvensafspiller/Lydfiler/250Hz_1_R.mp3")
-        pygame.mixer.music.play()
-        bantal +=1
-=======
             pygame.mixer.music.load("Frekvensafspiller/Lydfiler/250Hz_1_R.mp3")
             pygame.mixer.music.play()
             bantal +=1
->>>>>>> a88effa88c3dae16943548e0a2acf940c2246c4a
         for ten_loops in range(1000):
             if knaptrykket():
                 sluttid = time.time()
