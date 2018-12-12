@@ -3,6 +3,7 @@ from tkinter import ttk
 import InfoScreen
 import json
 
+
 TITLE_FONT = ("Verdana", 20, "bold")
 
 
@@ -10,33 +11,31 @@ class Age(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         label = tk.Label(self, text="Hvor gammel er du?", font=TITLE_FONT)
-        label.place(x=270, y=70)
+        label.place(x=270, y=40)
 
         label_1 = tk.Label(self, text="Indtast alder:", font="TITLE_FONT")
         self.age_entry = tk.Entry(self)
 
-        label_1.place(x=345, y=140)
-        self.age_entry.place(x=300, y=100)
+        label_1.place(x=270, y=117)
+        self.age_entry.place(x=380, y=120)
 
-        if self.age_entry.get() == "":
-            print (self.age_entry.get())
 
         Next_Age = tk.Button(self, text="Næste", width = 10, height = 3,
                             command=lambda: [self.update_json(),
                                              master.switch_frame(InfoScreen.Information)])
         Next_Age.place(x=540, y=220)
 
-        Num1 = tk.Button(self, text="1", width = 10, height = 3)
-        Num2 = tk.Button(self, text="2", width = 10, height = 3)
-        Num3 = tk.Button(self, text="3", width = 10, height = 3)
-        Num4 = tk.Button(self, text="4", width = 10, height = 3)
-        Num5 = tk.Button(self, text="5", width = 10, height = 3)
-        Num6 = tk.Button(self, text="6", width = 10, height = 3)
-        Num7 = tk.Button(self, text="7", width = 10, height = 3)
-        Num8 = tk.Button(self, text="8", width = 10, height = 3)
-        Num9 = tk.Button(self, text="9", width = 10, height = 3)
-        Num10 = tk.Button(self, text="0", width = 10, height = 3)
-        Num11 = tk.Button(self, text="<--", width = 10, height = 3)
+        Num1 = tk.Button(self, text="1", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"1")])
+        Num2 = tk.Button(self, text="2", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"2")])
+        Num3 = tk.Button(self, text="3", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"3")])
+        Num4 = tk.Button(self, text="4", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"4")])
+        Num5 = tk.Button(self, text="5", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"5")])
+        Num6 = tk.Button(self, text="6", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"6")])
+        Num7 = tk.Button(self, text="7", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"7")])
+        Num8 = tk.Button(self, text="8", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"8")])
+        Num9 = tk.Button(self, text="9", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"9")])
+        Num10 = tk.Button(self, text="0", width = 10, height = 3, command = lambda:[self.age_entry.insert('end',"0")])
+        Num11 = tk.Button(self, text="Slet alt", width = 10, height = 3, command = lambda: [self.age_entry.delete(0,'end')])
 
         Num1.place(x=240, y=160)
         Num2.place(x=340, y=160)
@@ -49,6 +48,9 @@ class Age(tk.Frame):
         Num9.place(x=440, y=280)
         Num10.place(x=340, y=340)
         Num11.place(x=540, y=160)
+
+        def NumPad(self, num):
+            self.age_entry.insert(0,num)
 
 
 
