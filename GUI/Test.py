@@ -85,7 +85,7 @@ class Test(tk.Frame):
         volume = pygame.mixer.music.get_volume()
         print (volume)
         if volume < 1.0:
-            new_volume = volume + 0.00001
+            new_volume = volume + 0.01
             pygame.mixer.music.set_volume(new_volume)
             self.after(20, self.increase_volume)
 
