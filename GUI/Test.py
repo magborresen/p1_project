@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import Resultat
-import pyglet
+import pygame
 import time
 import json
 import math
@@ -23,7 +23,7 @@ class Test(tk.Frame):
         sound_heard_btn.place(x=300, y=240)
 
         # Initier pygame, som er dimsen, som afspiller lydfilerne
-        #pygame.mixer.init()
+        pygame.mixer.init()
 
         self.test_num = 0
         self.frequency = 250
@@ -34,12 +34,9 @@ class Test(tk.Frame):
         self.test_num += 1
         print (self.frequency)
         if self.test_num > 1 and self.decibel <= 8000:
-            volume = self.player.volume
-            #volume = pygame.mixer.music.get_volume()
+            volume = pygame.mixer.music.get_volume()
             self.convert_to_db(volume)
             self.update_json(self.ear, self.decibel)
-            self.player.eos_action = None
-            self.player.delete()
             print (volume)
 
         if self.test_num == 1:
@@ -89,43 +86,24 @@ class Test(tk.Frame):
         print (volume)
         if volume < 1.0:
             new_volume = volume + 0.00001
-            self.player.volume = new_volume
-            #pygame.mixer.music.set_volume(new_volume)
+            pygame.mixer.music.set_volume(new_volume)
             self.after(20, self.increase_volume)
 
 
     def play_right_ear(self):
         volume = 0.0000
-        self.player = pyglet.media.Player()
-        sound_file = "../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3"
-        sound = pyglet.media.load(sound_file, streaming=False)
-        looper = pyglet.media.SourceGroup(sound.audio_format, None)
-        looper.loop = True
-        looper.queue(sound)
-        #pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
-        #pygame.mixer.music.play(10)
+        pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
 
-        #pygame.mixer.music.set_volume(volume)
-        self.player.volume = volume
-        self.player.queue(looper)
-        self.player.play()
+        pygame.mixer.music.set_volume(volume)
+        pygame.mixer.music.play(10)
         self.increase_volume()
 
     def play_left_ear(self):
         volume = 0.0000
-        self.player = pyglet.media.Player()
-        sound_file = "../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_L.mp3"
-        sound = pyglet.media.load(sound_file, streaming=False)
-        looper = pyglet.media.SourceGroup(sound.audio_format, None)
-        looper.loop = True
-        looper.queue(sound)
-        #pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
-        #pygame.mixer.music.play(10)
+        pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
 
-        #pygame.mixer.music.set_volume(volume)
-        self.player.volume = volume
-        self.player.queue(looper)
-        self.player.play()
+        pygame.mixer.music.set_volume(volume)
+        pygame.mixer.music.play(10)
         self.frequency = self.frequency * 2
         self.increase_volume()
 
