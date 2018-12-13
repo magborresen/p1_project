@@ -14,7 +14,7 @@ class Result(tk.Frame):
 
         New_Test = tk.Button(self, width = 10, height = 3, text ="Ny test",
         command = lambda: master.switch_frame(MainGUI.StartPage))
-        New_Test.place(x=620, y=400)
+        New_Test.place(x=520, y=400)
 
 
         with open("../variables.json", 'r') as f:
@@ -30,22 +30,22 @@ class Result(tk.Frame):
         noise_induced_label = tk.Label(self, text="Dette er dit støj inducerede høretab ved forskellige frekvenser.\n En værdi under 0 repræsenterer en bedre hørelse end gennemsnittet\n for den valgte alder, mens en værdi over 0, repræsenterer\n en ringere hørelse end gennemsnittet.")
         noise_induced_label.place(x=20, y=130)
 
-        noise_250 = tk.Label(self, text="Dit høretab ved lyde på 250 HZ er " + str(int(noise_induced_250)) + " dBA.")
+        noise_250 = tk.Label(self, text="Dit høretab ved lyde på 250 Hz er " + str(int(noise_induced_250)) + " dB.")
         noise_250.place(x=85, y=200)
 
-        noise_500 = tk.Label(self, text="Dit høretab ved lyde på 500 HZ er " + str(int(noise_induced_500)) + " dBA.")
+        noise_500 = tk.Label(self, text="Dit høretab ved lyde på 500 Hz er " + str(int(noise_induced_500)) + " dB.")
         noise_500.place(x=85, y=230)
 
-        noise_1000 = tk.Label(self, text="Dit høretab ved lyde på 1000 HZ er " + str(int(noise_induced_1000)) + " dBA.")
+        noise_1000 = tk.Label(self, text="Dit høretab ved lyde på 1000 Hz er " + str(int(noise_induced_1000)) + " dB.")
         noise_1000.place(x=85, y=260)
 
-        noise_2000 = tk.Label(self, text="Dit høretab ved lyde på 2000 HZ er " + str(int(noise_induced_2000)) + " dBA.")
+        noise_2000 = tk.Label(self, text="Dit høretab ved lyde på 2000 Hz er " + str(int(noise_induced_2000)) + " dB.")
         noise_2000.place(x=85, y=290)
 
-        noise_4000 = tk.Label(self, text="Dit høretab ved lyde på 4000 HZ er " + str(int(noise_induced_4000)) + " dBA.")
+        noise_4000 = tk.Label(self, text="Dit høretab ved lyde på 4000 Hz er " + str(int(noise_induced_4000)) + " dB.")
         noise_4000.place(x=85, y=320)
 
-        noise_8000 = tk.Label(self, text="Dit høretab ved lyde på 8000 HZ er " + str(int(noise_induced_8000)) + " dBA.")
+        noise_8000 = tk.Label(self, text="Dit høretab ved lyde på 8000 Hz er " + str(int(noise_induced_8000)) + " dB.")
         noise_8000.place(x=85, y=350)
 
 
@@ -67,7 +67,7 @@ class Result(tk.Frame):
         avg_noise_loss.place(x=30, y=30)
 
         if avg_loss <= 25:
-            recommendation = "Ingen handing nødvendig. \n Du er bare så god til at passe på din hørelse"
+            recommendation = "Ingen handing nødvendig."
         elif avg_loss <= 40:
             recommendation = "      Kontakt læge. \n       Høreapparat muligvis nødvendigt."
         elif avg_loss <= 60:
