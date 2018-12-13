@@ -82,7 +82,7 @@ class Test(tk.Frame):
 
     # Funktion, som faar lydstyrken til at stige
     def increase_volume(self):
-        volume = self.player.volume
+        volume = pygame.mixer.music.get_volume()
         print (volume)
         if volume < 1.0:
             new_volume = volume + 0.00001
