@@ -77,6 +77,8 @@ class Test(tk.Frame):
             self.play_left_ear()
         elif self.test_num == 13:
             self.after_cancel(self.increase_volume)
+            pygame.mixer.music.stop()
+            pygame.mixer.music.quit()
             calculate_result.calc_mean()
             self.master.switch_frame(Resultat.Result)
 
@@ -87,7 +89,7 @@ class Test(tk.Frame):
         if volume < 1.0:
             new_volume = volume + 0.01
             pygame.mixer.music.set_volume(new_volume)
-            self.after(20, self.increase_volume)
+            self.after(500, self.increase_volume)
 
 
     def play_right_ear(self):
@@ -100,7 +102,7 @@ class Test(tk.Frame):
 
     def play_left_ear(self):
         volume = 0.0000
-        pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
+        pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_L.mp3")
 
         pygame.mixer.music.set_volume(volume)
         pygame.mixer.music.play(10)
