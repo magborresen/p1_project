@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import tkinter as tk
 
 # Create a dictionary of all the frequencies
 frequency_mean = {'250': 0, '500': 0, '1000': 0, '2000': 0, '4000': 0, '8000': 0}
@@ -95,18 +96,23 @@ def calc_age_related(mean, gender, age):
                 if float(v) <= df2.iat[0, 2]:
                     print ("Ingen nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (df2.iat[0, 2])
                 elif float(v) <= df2.iat[0, 3]:
                     print ("Svag nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (df2.iat[0, 3])
                 elif float(v) <= df2.iat[0, 4]:
                     print ("Moderat nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (df2.iat[0, 4])
                 elif float(v) <= df2.iat[0, 5]:
                     print ("Alvorlig nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (df2.iat[0, 5])
                 elif float(v) <= df2.iat[0, 6]:
                     print ("Dybtgående nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (df2.iat[0, 6])
 
     print ("Age related loss: ")
     print (age_related_loss)
@@ -139,11 +145,12 @@ def calc_noise_induced(mean, age_related_loss):
 
     for k, v in mean.items():
         for f, h in age_related_loss.items():
-            if int(f) > 0:
+            if int(h) > 0:
                 loss = float(v) - float(h)
                 noise_induced_loss[k] = loss
+                print (loss)
             else:
-                pass
+                noise_induced_loss[k] = float(h)
 
     print ("Noise induced loss: ")
     print (noise_induced_loss)
