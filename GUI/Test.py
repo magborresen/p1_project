@@ -78,7 +78,6 @@ class Test(tk.Frame):
         elif self.test_num == 13:
             self.after_cancel(self.increase_volume)
             pygame.mixer.music.stop()
-            pygame.mixer.music.quit()
             calculate_result.calc_mean()
             self.master.switch_frame(Resultat.Result)
 
@@ -106,7 +105,10 @@ class Test(tk.Frame):
 
         pygame.mixer.music.set_volume(volume)
         pygame.mixer.music.play(10)
-        self.frequency = self.frequency * 2
+
+        if self.frequency <= 8000:
+            self.frequency = self.frequency * 2
+            
         self.increase_volume()
 
     # Funktion som omregner volumen til decibel ud fra funktion fra tendenslinje
