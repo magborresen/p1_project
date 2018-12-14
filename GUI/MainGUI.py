@@ -51,5 +51,6 @@ class StartPage(tk.Frame):# definere en class som inharits fra tk.TK
 
 app = Window()
 app.geometry("800x480")
+app.title("Høretester")
 #app.wm_attributes('-fullscreen','true')
 app.mainloop()#Holder det definerede vindue åben.
