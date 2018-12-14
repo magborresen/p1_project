@@ -91,7 +91,7 @@ class Test(tk.Frame):
         if volume < 1.0:
             new_volume = volume + 0.01
             pygame.mixer.music.set_volume(new_volume)
-            self.after(500, increase_volume)
+            self.after(500, self.increase_volume)
 
 
     def play_right_ear(self):
