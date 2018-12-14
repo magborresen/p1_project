@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import Resultat
 import pygame
-import time
+from datetime import datetime
 import json
 import math
 import sys
@@ -17,10 +17,10 @@ class Test(tk.Frame):
         tk.Frame.__init__(self, master)
         label = tk.Label(self, text="Høretest i gang...", font=TITLE_FONT)
         label.place(x=300, y=150)
-        sound_heard_btn = tk.Button(self, width=20, height=5, text="Hørt",
+        self.sound_heard_btn = tk.Button(self, width=20, height=5, text="Start Test",
                                     command=lambda: self.hort())
 
-        sound_heard_btn.place(x=300, y=240)
+        self.sound_heard_btn.place(x=300, y=240)
 
         # Initier pygame, som er dimsen, som afspiller lydfilerne
         pygame.mixer.init()
@@ -31,6 +31,7 @@ class Test(tk.Frame):
         self.decibel = 0
 
     def hort(self):
+        self.sound_heard_btn["text"] = "Hørt"
         self.test_num += 1
         print (self.frequency)
         if self.test_num > 1 and self.decibel <= 8000:
@@ -44,6 +45,7 @@ class Test(tk.Frame):
             self.play_right_ear()
         elif self.test_num == 2:
             self.ear = 1
+ 
             self.play_left_ear()
         elif self.test_num == 3:
             self.ear = 0
@@ -76,8 +78,8 @@ class Test(tk.Frame):
             self.ear = 1
             self.play_left_ear()
         elif self.test_num == 13:
-            pygame.mixer.music.stop()
             self.after_cancel(self.increase_volume)
+            pygame.mixer.music.stop()
             calculate_result.calc_mean()
             self.master.switch_frame(Resultat.Result)
 
@@ -85,31 +87,36 @@ class Test(tk.Frame):
     def increase_volume(self):
         volume = pygame.mixer.music.get_volume()
         print (volume)
+        print (datetime.now().time())
         if volume < 1.0:
             new_volume = volume + 0.01
             pygame.mixer.music.set_volume(new_volume)
-            self.after(2000, self.increase_volume)
+            self.after(500, self.increase_volume)
+
 
     def play_right_ear(self):
-        volume = 0.000
+        volume = 0.0
         pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
-        pygame.mixer.music.play(10)
 
         pygame.mixer.music.set_volume(volume)
+        pygame.mixer.music.play(10)
         self.increase_volume()
 
     def play_left_ear(self):
-        volume = 0.000
+        volume = 0.0
         pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_L.mp3")
-        pygame.mixer.music.play(10)
 
         pygame.mixer.music.set_volume(volume)
-        self.frequency = self.frequency * 2
+        pygame.mixer.music.play(10)
+
+        if self.frequency <= 8000:
+            self.frequency = self.frequency * 2
+
         self.increase_volume()
 
     # Funktion som omregner volumen til decibel ud fra funktion fra tendenslinje
     def convert_to_db(self, volume):
-        self.decibel = 8.87864 * math.log(volume) + 79.31112
+        self.decibel = 6.9503 * math.log(volume) + 40.533
 
     def update_json(self, ear, decibel):
         if ear == 0:
