@@ -96,23 +96,27 @@ def calc_age_related(mean, gender, age):
                 if float(v) <= df2.iat[0, 2]:
                     print ("Ingen nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 3]:
                     print ("Svag nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (df2.iat[0, 3])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 4]:
                     print ("Moderat nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (df2.iat[0, 4])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 5]:
                     print ("Alvorlig nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (df2.iat[0, 5])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 6]:
                     print ("Dybtgående nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (df2.iat[0, 6])
+                    print (float(v) - float(df2.iat[0, 2]))
+                else: 
+                    print ("Uden for skala")
+                    age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
 
     print ("Age related loss: ")
     print (age_related_loss)

@@ -108,7 +108,7 @@ class Test(tk.Frame):
 
         if self.frequency <= 8000:
             self.frequency = self.frequency * 2
-            
+
         self.increase_volume()
 
     # Funktion som omregner volumen til decibel ud fra funktion fra tendenslinje
