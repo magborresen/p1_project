@@ -29,12 +29,14 @@ class Test(tk.Frame):
         self.frequency = 250
         self.ear = 0
         self.decibel = 0
+        self._job = None
 
     def hort(self):
         self.sound_heard_btn["text"] = "Hørt"
         self.test_num += 1
         print (self.frequency)
         if self.test_num > 1 and self.decibel <= 8000:
+            self.cancel_increase()
             volume = pygame.mixer.music.get_volume()
             self.convert_to_db(volume)
             self.update_json(self.ear, self.decibel)
@@ -78,7 +80,8 @@ class Test(tk.Frame):
             self.ear = 1
             self.play_left_ear()
         elif self.test_num == 13:
-            self.after_cancel(self.increase_volume)
+            self.after_cancel(self._job)
+            self._job = None
             pygame.mixer.music.stop()
             calculate_result.calc_mean()
             self.master.switch_frame(Resultat.Result)
@@ -91,7 +94,12 @@ class Test(tk.Frame):
         if volume < 1.0:
             new_volume = volume + 0.01
             pygame.mixer.music.set_volume(new_volume)
-            self.after(500, self.increase_volume)
+            self._job = self.after(500, self.increase_volume)
+
+    def cancel_increase(self):
+        if self._job is not None:
+            self.after_cancel(self._job)
+            self._job = None
 
 
     def play_right_ear(self):
@@ -119,6 +127,9 @@ class Test(tk.Frame):
         self.decibel = 6.9503 * math.log(volume) + 40.533
 
     def update_json(self, ear, decibel):
+        '''Funktionen åbner variables.json og gennem den
+        omregnede decibel i den passsende frekvens
+        på det passende øre'''
         if ear == 0:
             with open('../variables.json', 'r+') as f:
                 data = json.load(f)
