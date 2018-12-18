@@ -17,7 +17,7 @@ class Information(tk.Frame):
 
         label_title = tk.Label(self, text="Om testen",font=TITLE_FONT)
 
-        label = tk.Label(self, text="Under denne høretest vil din hørelse blive testet og kan bruges som en indikation \n for eventuelle høreskader/høretab. Testen kan derfor ikke anvendes som erstatning\n for konsultation hos en læge. Ved mistanke om høreskader anbefales det altid \n at se en læge for en mere præcis høretest.",
+        label = tk.Label(self, text="Denne høretest vil undersøge din hørelse og kan bruges som en indikation \n for eventuelle høreskader/høretab. Testen kan derfor ikke anvendes som erstatning\n for konsultation hos en læge. Ved mistanke om høreskader anbefales det altid \n at se en læge for en mere præcis høretest.",
                          font="TITLE_FONT")
         label2 = tk.Label(self, text="Testen udføres med høretelefoner og udføres i et stille rum, gerne så stille som muligt\n for at få det mest pålidelige resultat uden forstyrrende støj. Under testen vil \n du høre forskellige toner i forskellig lydstyrke. Når du hører en tone, trykkes på knappen.",
                             font="TITLE_FONT")
