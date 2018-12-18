@@ -80,8 +80,6 @@ class Test(tk.Frame):
             self.ear = 1
             self.play_left_ear()
         elif self.test_num == 13:
-            self.after_cancel(self._job)
-            self._job = None
             pygame.mixer.music.stop()
             calculate_result.calc_mean()
             self.master.switch_frame(Resultat.Result)
@@ -96,12 +94,13 @@ class Test(tk.Frame):
             pygame.mixer.music.set_volume(new_volume)
             self._job = self.after(500, self.increase_volume)
 
+    # Denne funktion vil slette den tk.after() funktion der bliver kaldt i increase_volume()
     def cancel_increase(self):
         if self._job is not None:
             self.after_cancel(self._job)
             self._job = None
 
-
+    # Afspiller en lydfil vha. pygame i 10 loops i det højre øre
     def play_right_ear(self):
         volume = 0.0
         pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_R.mp3")
@@ -110,6 +109,7 @@ class Test(tk.Frame):
         pygame.mixer.music.play(10)
         self.increase_volume()
 
+    # Afspiller en lydfil vha. pygame i 10 loops i det venstre
     def play_left_ear(self):
         volume = 0.0
         pygame.mixer.music.load("../Frekvensafspiller/justerede_lydfiler/" + str(self.frequency) + "Hz_L.mp3")
@@ -122,9 +122,11 @@ class Test(tk.Frame):
 
         self.increase_volume()
 
-    # Funktion som omregner volumen til decibel ud fra funktion fra tendenslinje
+
+    # Omregner volumen til decibel ud fra funktion fra tendenslinje
     def convert_to_db(self, volume):
         self.decibel = 6.9503 * math.log(volume) + 40.533
+
 
     def update_json(self, ear, decibel):
         '''Funktionen åbner variables.json og gennem den
