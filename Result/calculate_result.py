@@ -1,43 +1,62 @@
 import pandas as pd
 import json
+import tkinter as tk
 
 # Create a dictionary of all the frequencies
-frequency_mean = {'0.25': 0, '0.5': 0, '1': 0, '2': 0, '4': 0, '8': 0}
+frequency_mean = {'250': 0, '500': 0, '1000': 0, '2000': 0, '4000': 0, '8000': 0}
 
 
-def calc_mean(list_left_ear, list_right_ear, gender, age):
+def calc_mean():
 
-    mean_left = 0
-    mean_right = 0
+    with open('../variables.json', 'r') as f:
+        data = json.load(f)
+        frequency_mean['250'] = (data["left_ear_test"]["250"] +
+                                 data["right_ear_test"]["250"]) / 2
+        frequency_mean['500'] = (data["left_ear_test"]["500"] +
+                                 data["right_ear_test"]["500"]) / 2
+        frequency_mean['1000'] = (data["left_ear_test"]["1000"] +
+                                  data["right_ear_test"]["1000"]) / 2
+        frequency_mean['2000'] = (data["left_ear_test"]["2000"] +
+                                  data["right_ear_test"]["2000"]) / 2
+        frequency_mean['4000'] = (data["left_ear_test"]["4000"] +
+                                  data["right_ear_test"]["4000"]) / 2
+        frequency_mean['8000'] = (data["left_ear_test"]["8000"] +
+                                  data["right_ear_test"]["8000"]) / 2
+        gender = data["Gender"]
+        age = data["Age"]
 
-    # Calculate the mean of both ears for every frequency
-    frequency_mean['0.25'] = (list_left_ear[0] + list_right_ear[0]) / 2
-    frequency_mean['0.5'] = (list_left_ear[1] + list_right_ear[1]) / 2
-    frequency_mean['1'] = (list_left_ear[2] + list_right_ear[2]) / 2
-    frequency_mean['2'] = (list_left_ear[3] + list_right_ear[3]) / 2
-    frequency_mean['4'] = (list_left_ear[4] + list_right_ear[4]) / 2
-    frequency_mean['8'] = (list_left_ear[5] + list_right_ear[5]) / 2
+
+    #mean_left = 0
+    #mean_right = 0
+
 
     # Calculate the total mean of the left ear
-    for num in list_left_ear:
-        mean_left += num
+    #for num in list_left_ear:
+    #    mean_left += num
 
     # Calculate the total mean of the right ear
-    for num in list_right_ear:
-        mean_right += num
+    #for num in list_right_ear:
+    #    mean_right += num
 
-    mean_left = mean_left / 6
-    print ("Mean left: " + str(mean_left))
-    mean_right = mean_right / 6
-    print ("Mean right: " + str(mean_right))
+    #mean_left = mean_left / 6
+    #print ("Mean left: " + str(mean_left))
+    #mean_right = mean_right / 6
+    #print ("Mean right: " + str(mean_right))
 
-    mean = (mean_left + mean_right) / 2
+    print ("Frequency mean: ")
+    print (frequency_mean)
+    mean = 0
+
+    for k, v in frequency_mean.items():
+        mean = mean + v
+
+    mean = mean / 6
     print ("Mean total: " + str(mean))
 
     with open("../variables.json", "r+") as f:
         data = json.load(f)
-        data["mean_left"] = mean_left
-        data["mean_right"] = mean_right
+        #data["mean_left"] = mean_left
+        #data["mean_right"] = mean_right
         data["mean"] = mean
         f.seek(0)
         json.dump(data, f)
@@ -50,13 +69,18 @@ def calc_mean(list_left_ear, list_right_ear, gender, age):
 
 def calc_age_related(mean, gender, age):
 
-    age_related_loss = {}
+    age_related_loss = {'250': 0,
+                        '500': 0,
+                        '1000': 0,
+                        '2000': 0,
+                        '4000': 0,
+                        '8000': 0}
 
     # Choose sheetname according to gender and convert to openpyxl workbook
     if gender == "Kvinde":
-        df = pd.read_excel("hearing_age.xlsx", sheet_name="Kvinder")
+        df = pd.read_excel("../Result/hearing_age.xlsx", sheet_name="Kvinder")
     elif gender == "Mand":
-        df = pd.read_excel("hearing_age.xlsx", sheet_name="Maend")
+        df = pd.read_excel("../Result/hearing_age.xlsx", sheet_name="Maend")
 
     # Compare hearing loss for every frequency relative to the users age
     for age_num in df['Alder [år]']:
@@ -65,77 +89,46 @@ def calc_age_related(mean, gender, age):
 
     sort_df = df[df['Alder [år]'] == age_range]
 
-    for k, v in frequency_mean.items():
-        for freq in sort_df['Frekvens [kHz]']:
-            if float(k) == freq:
-                df2 = sort_df[sort_df['Frekvens [kHz]'] == freq]
+    for k, v in mean.items():
+        for freq in sort_df['Frekvens [Hz]']:
+            if int(k) == freq:
+                df2 = sort_df[sort_df['Frekvens [Hz]'] == freq]
                 if float(v) <= df2.iat[0, 2]:
                     print ("Ingen nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 3]:
                     print ("Svag nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 4]:
                     print ("Moderat nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 5]:
                     print ("Alvorlig nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 6]:
                     print ("Dybtgående nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
+                else: 
+                    print ("Uden for skala")
+                    age_related_loss[k] = float(v) - float(df2.iat[0, 2])
+                    print (float(v) - float(df2.iat[0, 2]))
 
     print ("Age related loss: ")
     print (age_related_loss)
 
     with open("../variables.json", "r+") as f:
         data = json.load(f)
-        data["age_related_loss"]["0.25"] = age_related_loss["0.25"]
-        data["age_related_loss"]["0.5"] = age_related_loss["0.5"]
-        data["age_related_loss"]["1"] = age_related_loss["1"]
-        data["age_related_loss"]["2"] = age_related_loss["2"]
-        data["age_related_loss"]["4"] = age_related_loss["4"]
-        data["age_related_loss"]["8"] = age_related_loss["8"]
+        data["age_related_loss"]["250"] = age_related_loss["250"]
+        data["age_related_loss"]["500"] = age_related_loss["500"]
+        data["age_related_loss"]["1000"] = age_related_loss["1000"]
+        data["age_related_loss"]["2000"] = age_related_loss["2000"]
+        data["age_related_loss"]["4000"] = age_related_loss["4000"]
+        data["age_related_loss"]["8000"] = age_related_loss["8000"]
         f.seek(0)
         json.dump(data, f)
         f.truncate()
-
-    calc_noise_induced(mean, age_related_loss)
-
-
-# Calculate the noise induced hearing loss
-
-def calc_noise_induced(mean, age_related_loss):
-
-    noise_induced_loss = {}
-
-    for k, v in mean:
-        for f, h in age_related_loss:
-            if f > 0:
-                loss = float(v) - float(h)
-                noise_induced_loss[k] = loss
-            else:
-                pass
-
-    print ("Noise induced loss: ")
-    print (noise_induced_loss)
-
-    show_result(mean, age_related_loss, noise_induced_loss)
-
-    with open("../variables.json", "r+") as f:
-        data = json.load(f)
-        data["noise_induced_loss"]["0.25"] = noise_induced_loss["0.25"]
-        data["noise_induced_loss"]["0.5"] = noise_induced_loss["0.5"]
-        data["noise_induced_loss"]["1"] = noise_induced_loss["1"]
-        data["noise_induced_loss"]["2"] = noise_induced_loss["2"]
-        data["noise_induced_loss"]["4"] = noise_induced_loss["4"]
-        data["noise_induced_loss"]["8"] = noise_induced_loss["8"]
-        f.seek()
-        json.dump(data, f)
-        f.truncate()
-
-
-# Show the result
-
-def show_result(mean, age_related, noise_induced):
-    pass

@@ -11,13 +11,13 @@ class Age(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         label = tk.Label(self, text="Hvor gammel er du?", font=TITLE_FONT)
-        label.place(x=270, y=70)
+        label.place(x=270, y=40)
 
         label_1 = tk.Label(self, text="Indtast alder:", font="TITLE_FONT")
         self.age_entry = tk.Entry(self)
 
-        label_1.place(x=345, y=140)
-        self.age_entry.place(x=300, y=100)
+        label_1.place(x=270, y=117)
+        self.age_entry.place(x=380, y=120)
 
 
         Next_Age = tk.Button(self, text="Næste", width = 10, height = 3,

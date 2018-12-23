@@ -8,18 +8,15 @@ import Alder
 import Gender
 
 
-
-
 TITLE_FONT = ("Verdana", 20, "bold")
 
 
-class Window(tk.Tk):# definere en class som inharits fra tk.TK
+class Window(tk.Tk): # definere en class som inharits fra tk.TK
 
     def __init__(self, *args, **kwargs): #Method som altid køre når class er i brug
         tk.Tk.__init__(self, *args, **kwargs)
-
         container = tk.Frame(self) #definere en container
-        container.pack()#indsætter container
+        container.pack() #indsætter container
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
@@ -43,16 +40,17 @@ class StartPage(tk.Frame):# definere en class som inharits fra tk.TK
 
         label = tk.Label(self, text="Høretester V.1",
                          font=TITLE_FONT) #definere et label (text)
-        label.place(x=300, y=150) #indsætter det definerede label
+        label.place(x=300, y=120) #indsætter det definerede label
 
         Get_Started = tk.Button(self, text="Kom Igang", width = 20, height = 5,
                             command=lambda: master.switch_frame(
                                 Gender.GenderPick)) #definere en knap og dens funktion
-        Get_Started.place(x=295, y=240)
+        Get_Started.place(x=325, y=220)
 
 
 
 app = Window()
-app.geometry("800x480")
+app.geometry("800x400")
+app.title("Høretester")
 #app.wm_attributes('-fullscreen','true')
 app.mainloop()#Holder det definerede vindue åben.
