@@ -1,0 +1,103 @@
+//=============== Variabler========================
+#include <LiquidCrystal.h>
+const int Gul = 9;
+const int Red = 8;
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+//================ Funktioner======================
+void setup() {
+  lcd.begin(16, 2);
+  pinMode(Gul, INPUT_PULLUP);
+  pinMode(Red, INPUT_PULLUP);
+}
+//_________________________________________________
+
+void loop() {
+  Menu();
+}
+
+//================ Funktioner======================
+void Menu() {
+  lcd.setCursor(0, 0);
+  lcd.print("----<Menu>------");
+  lcd.setCursor(0, 1);
+  lcd.print("Play   Highscore");
+
+  while (digitalRead(Gul) == LOW and digitalRead(Red) == LOW) {
+
+
+  }
+
+  if (digitalRead(Gul) == HIGH) {
+    lcd.clear();
+  }
+
+  else if (digitalRead(Red) == HIGH) {
+    GameStart();
+  }
+}
+//________________________________________________
+
+void GameStart() {
+  lcd.clear();
+  Alive = true;
+  lcd.setCursor(1, 1);
+  lcd.print(Player);
+  delay(100);
+  Playing();
+
+}
+
+//________________________________________________
+
+
+void Controller() {
+
+  if (digitalRead(Red) == HIGH) {
+    lcd.setCursor(1, 1);
+    lcd.print(" ");
+    lcd.setCursor(1, 0);
+    lcd.print(Player);
+    PlayerPlace = 0;
+
+  }
+
+  if (digitalRead(Gul) == HIGH) {
+    lcd.setCursor(1, 0);
+    lcd.print(" ");
+    lcd.setCursor(1, 1);
+    lcd.print(Player);
+    PlayerPlace = 1;
+  }
+}
+________________________________________________
+
+void Playing () {
+
+  while (Alive == true) {
+    Playing();
+    for (Shot > 0; Shot <= 16; Shot--) {
+      Controller();
+      lcd.setCursor(Shot, random(0, 1));
+      lcd.print(Bullet);
+      delay(DTime);
+      Controller();
+      lcd.print(" ");
+      PTime++;
+      if (PTime == 10) {
+        DTime - 50;
+        PTime = 0;
+
+
+      }
+     if (Shot == PlayerPlace) {
+        Alive = false;
+
+        if (PTime == 10) {
+          DTime - 50;
+          PTime = 0;
+        }
+      }
+    }
+  }
+}
