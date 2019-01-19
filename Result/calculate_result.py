@@ -26,23 +26,6 @@ def calc_mean():
         age = data["Age"]
 
 
-    #mean_left = 0
-    #mean_right = 0
-
-
-    # Calculate the total mean of the left ear
-    #for num in list_left_ear:
-    #    mean_left += num
-
-    # Calculate the total mean of the right ear
-    #for num in list_right_ear:
-    #    mean_right += num
-
-    #mean_left = mean_left / 6
-    #print ("Mean left: " + str(mean_left))
-    #mean_right = mean_right / 6
-    #print ("Mean right: " + str(mean_right))
-
     print ("Frequency mean: ")
     print (frequency_mean)
     mean = 0
@@ -55,14 +38,52 @@ def calc_mean():
 
     with open("../variables.json", "r+") as f:
         data = json.load(f)
-        #data["mean_left"] = mean_left
-        #data["mean_right"] = mean_right
         data["mean"] = mean
         f.seek(0)
         json.dump(data, f)
         f.truncate()
 
-    calc_age_related(frequency_mean, gender, age)
+    calc_age_related_new(frequency_mean, gender, age)
+
+
+def calc_age_related_new(mean, gender, age):
+
+    age_related_loss_new = {'250':0,
+                            '500':0,
+                            '1000':0,
+                            '2000':0,
+                            '4000':0,
+                            '8000':0}
+    
+    if gender == "Kvinde":
+        df = pd.read_excel("Hearing_data.xlsx", sheet_name="Female")
+        df_median = pd.read_excel("Hearing_data.xlsx", sheet_name="Median_Female")
+    else:
+        df = pd.read_excel("Hearing_data.xlsx", sheet_name="Male")
+        df_median = pd.read_excel("Hearing_data", sheet_name="Median_Male")
+
+    for k, v in mean.items():
+        for freq in df_median['Hz']:
+            if int(k) == freq:
+                sorted_df_median = df_median[df_median['Hz'] == freq]
+                alpha = sorted_df_median['alpha'][0]
+                beta = sorted_df_median['beta'][0]
+                calc_median = alpha*(age-18)**beta
+                calc_loss = mean[k] - calc_median
+                age_related_loss_new[k] = calc_loss
+
+
+    with open("../variables.json", "r+") as f:
+        data = json.load(f)
+        data["age_related_loss"]["250"] = age_related_loss_new["250"]
+        data["age_related_loss"]["500"] = age_related_loss_new["500"]
+        data["age_related_loss"]["1000"] = age_related_loss_new["1000"]
+        data["age_related_loss"]["2000"] = age_related_loss_new["2000"]
+        data["age_related_loss"]["4000"] = age_related_loss_new["4000"]
+        data["age_related_loss"]["8000"] = age_related_loss_new["8000"]
+        f.seek(0)
+        json.dump(data, f)
+        f.truncate()
 
 
 # Calculate the difference in age related hearing loss
@@ -78,9 +99,9 @@ def calc_age_related(mean, gender, age):
 
     # Choose sheetname according to gender and convert to openpyxl workbook
     if gender == "Kvinde":
-        df = pd.read_excel("../Result/hearing_age.xlsx", sheet_name="Kvinder")
+        df = pd.read_excel("Hearing_data.xlsx", sheet_name="Female")
     elif gender == "Mand":
-        df = pd.read_excel("../Result/hearing_age.xlsx", sheet_name="Maend")
+        df = pd.read_excel("Hearing_data.xlsx", sheet_name="Male")
 
     # Compare hearing loss for every frequency relative to the users age
     for age_num in df['Alder [år]']:
