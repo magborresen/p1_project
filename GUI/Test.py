@@ -92,7 +92,7 @@ class Test(tk.Frame):
         if volume < 1.0:
             new_volume = volume + 0.01
             pygame.mixer.music.set_volume(new_volume)
-            self._job = self.after(500, self.increase_volume)
+            self._job = self.after(1000, self.increase_volume)
 
     # Denne funktion vil slette den tk.after() funktion der bliver kaldt i increase_volume()
     def cancel_increase(self):
