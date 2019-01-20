@@ -25,16 +25,15 @@ def calc_mean():
         gender = data["Gender"]
         age = data["Age"]
 
-
-    print ("Frequency mean: ")
-    print (frequency_mean)
+    print("Frequency mean: ")
+    print(frequency_mean)
     mean = 0
 
     for k, v in frequency_mean.items():
         mean = mean + v
 
     mean = mean / 6
-    print ("Mean total: " + str(mean))
+    print("Mean total: " + str(mean))
 
     with open("../variables.json", "r+") as f:
         data = json.load(f)
@@ -48,13 +47,13 @@ def calc_mean():
 
 def calc_age_related_new(mean, gender, age):
 
-    age_related_loss_new = {'250':0,
-                            '500':0,
-                            '1000':0,
-                            '2000':0,
-                            '4000':0,
-                            '8000':0}
-    
+    age_related_loss_new = {'250': 0,
+                            '500': 0,
+                            '1000': 0,
+                            '2000': 0,
+                            '4000': 0,
+                            '8000': 0}
+
     if gender == "Kvinde":
         df = pd.read_excel("Hearing_data.xlsx", sheet_name="Female")
         df_median = pd.read_excel("Hearing_data.xlsx", sheet_name="Median_Female")
@@ -72,7 +71,6 @@ def calc_age_related_new(mean, gender, age):
                 calc_loss = mean[k] - calc_median
                 age_related_loss_new[k] = calc_loss
 
-
     with open("../variables.json", "r+") as f:
         data = json.load(f)
         data["age_related_loss"]["250"] = age_related_loss_new["250"]
@@ -85,6 +83,35 @@ def calc_age_related_new(mean, gender, age):
         json.dump(data, f)
         f.truncate()
 
+
+def calc_hearing_level(age_related_loss):
+
+    diffuse_field = {'250': 11.4,
+                     '500': 4.4,
+                     '1000': 2.5,
+                     '2000': -1.3,
+                     '4000': -5.4,
+                     '8000': 12.6}
+
+    hearing_level = {'250': 0,
+                     '500': 0,
+                     '1000': 0,
+                     '2000': 0,
+                     '4000': 0,
+                     '8000': 0}
+
+    for k, v in age_related_loss.items():
+        hearing_level[k] = v - diffuse_field[k]
+
+    with open("../variables.json", "r+") as f:
+        data = json.load(f)
+        for k, v in hearing_level.items():
+            data["hearing_level"][k] = v
+        f.seek(0)
+        json.dump(data, f)
+        f.truncate()
+
+####### NO LONGER IN USE ########
 
 # Calculate the difference in age related hearing loss
 
@@ -115,29 +142,29 @@ def calc_age_related(mean, gender, age):
             if int(k) == freq:
                 df2 = sort_df[sort_df['Frekvens [Hz]'] == freq]
                 if float(v) <= df2.iat[0, 2]:
-                    print ("Ingen nedsættelse")
+                    print("Ingen nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (float(v) - float(df2.iat[0, 2]))
+                    print(float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 3]:
-                    print ("Svag nedsættelse")
+                    print("Svag nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (float(v) - float(df2.iat[0, 2]))
+                    print(float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 4]:
-                    print ("Moderat nedsættelse")
+                    print("Moderat nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (float(v) - float(df2.iat[0, 2]))
+                    print(float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 5]:
-                    print ("Alvorlig nedsættelse")
+                    print("Alvorlig nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (float(v) - float(df2.iat[0, 2]))
+                    print(float(v) - float(df2.iat[0, 2]))
                 elif float(v) <= df2.iat[0, 6]:
-                    print ("Dybtgående nedsættelse")
+                    print("Dybtgående nedsættelse")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (float(v) - float(df2.iat[0, 2]))
-                else: 
-                    print ("Uden for skala")
+                    print(float(v) - float(df2.iat[0, 2]))
+                else:
+                    print("Uden for skala")
                     age_related_loss[k] = float(v) - float(df2.iat[0, 2])
-                    print (float(v) - float(df2.iat[0, 2]))
+                    print(float(v) - float(df2.iat[0, 2]))
 
     print ("Age related loss: ")
     print (age_related_loss)
@@ -153,3 +180,5 @@ def calc_age_related(mean, gender, age):
         f.seek(0)
         json.dump(data, f)
         f.truncate()
+
+####### NO LONGER IN USE ########
