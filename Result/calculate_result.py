@@ -42,7 +42,7 @@ def calc_mean():
         json.dump(data, f)
         f.truncate()
 
-    calc_age_related_new(frequency_mean, gender, age)
+    calc_hearing_level(frequency_mean)
 
 
 def calc_age_related_new(mean, gender, age):
@@ -55,11 +55,11 @@ def calc_age_related_new(mean, gender, age):
                             '8000': 0}
 
     if gender == "Kvinde":
-        df = pd.read_excel("Hearing_data.xlsx", sheet_name="Female")
-        df_median = pd.read_excel("Hearing_data.xlsx", sheet_name="Median_Female")
+        df = pd.read_excel("../Result/Hearing_data.xlsx", sheet_name="Female")
+        df_median = pd.read_excel("../Result/Hearing_data.xlsx", sheet_name="Median_Female")
     else:
-        df = pd.read_excel("Hearing_data.xlsx", sheet_name="Male")
-        df_median = pd.read_excel("Hearing_data", sheet_name="Median_Male")
+        df = pd.read_excel("../Result/Hearing_data.xlsx", sheet_name="Male")
+        df_median = pd.read_excel("../Result/Hearing_data.xlsx", sheet_name="Median_Male")
 
     for k, v in mean.items():
         for freq in df_median['Hz']:
@@ -84,14 +84,14 @@ def calc_age_related_new(mean, gender, age):
         f.truncate()
 
 
-def calc_hearing_level(age_related_loss):
+def calc_hearing_level(mean):
 
     diffuse_field = {'250': 11.4,
-                     '500': 4.4,
-                     '1000': 2.5,
-                     '2000': -1.3,
-                     '4000': -5.4,
-                     '8000': 12.6}
+                     '500': 3.8,
+                     '1000': 0.8,
+                     '2000': -1.5,
+                     '4000': -3.8,
+                     '8000': 6.8}
 
     hearing_level = {'250': 0,
                      '500': 0,
@@ -100,7 +100,7 @@ def calc_hearing_level(age_related_loss):
                      '4000': 0,
                      '8000': 0}
 
-    for k, v in age_related_loss.items():
+    for k, v in mean.items():
         hearing_level[k] = v - diffuse_field[k]
 
     with open("../variables.json", "r+") as f:
